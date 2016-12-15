@@ -22,7 +22,7 @@ class MesuresController < ApplicationController
     last_minute_mesures = Mesure.where(user_id: id).last(cant)
     last_minute_mesures_count = last_minute_mesures.count
     last_minute_mesures_prom = last_minute_mesures.sum(&:value)
-    if (last_minute_mesures_count < countant)
+    if (last_minute_mesures_count != 0 &&  last_minute_mesures_count < cant)
       cant = last_minute_mesures_count
     end  
     last_minute_mesures_prom /= cant
@@ -35,11 +35,11 @@ class MesuresController < ApplicationController
     else
       all_mesures_prom = 0
     end  
-    
+
     last_5_minutes_mesures = Mesure.where(user_id: id).last(cant2)
     last_5_minutes_mesures_count = last_5_minutes_mesures.count
     last_5_minutes_mesures_prom = last_5_minutes_mesures.sum(&:value)
-    if (last_5_minutes_mesures_count < cant2)
+    if (last_5_minutes_mesures_count != 0 && last_5_minutes_mesures_count < cant2)
       cant2 = last_5_minutes_mesures_count
     end  
     last_5_minutes_mesures_prom /= cant2
