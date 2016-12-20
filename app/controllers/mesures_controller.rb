@@ -1,19 +1,5 @@
 class MesuresController < ApplicationController
 
-  def index
-  	@mesures = Mesure.where(user_id: params[:user_id])
-    #@mesures_to_json = @mesures.collect{|x| x.id, x.value, x.create_at}
-    @mesures_to_json = []
-    @mesures.each do |x|
-      @mesures_to_json << [id: x.id,value: x.value,date: x.created_at.strftime('%Y-%m-%d %H:%M:%S')] 
-      end
-      
-    render json: @mesures
-  end
-
-   def create
-  end	
-
   def statics
     id = params[:user_id]
     cant = 10
