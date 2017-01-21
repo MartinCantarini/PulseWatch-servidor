@@ -21,9 +21,9 @@ class MesuresController < ApplicationController
     last_5_minutes_mesures_count = last_5_minutes_mesures.count
     last_5_minutes_mesures_sum = last_5_minutes_mesures.sum(&:value)
     if last_5_minutes_mesures_count > 0
-      last_5_minute_mesures_prom = last_5_minute_mesures_sum / last_5_minute_mesures_count
+      last_5_minutes_mesures_prom = last_5_minute_mesures_sum / last_5_minute_mesures_count
     else
-      last_5_minute_mesures_prom = 0   
+      last_5_minutes_mesures_prom = 0   
     end
 
     #TODAS LAS MEDICIONES
