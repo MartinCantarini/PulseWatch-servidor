@@ -35,11 +35,14 @@ class MesuresController < ApplicationController
       all_mesures_prom = 0
     end  
 
+    #ULTIMAS MEDICIONES
+    last_20_mesures = mesures.last(20)
+
     #MEDICIÓN MAS ALTA
     max_mesure = mesures.maximum(:value)
     
     #JSON
-    render json: {max_mesure: max_mesure,last_minute_mesures_prom: last_minute_mesures_prom,all_mesures_prom: all_mesures_prom,last_5_minutes_mesures_prom: last_5_minutes_mesures_prom,mesures: last_minute_mesures}
+    render json: {max_mesure: max_mesure,last_minute_mesures_prom: last_minute_mesures_prom,all_mesures_prom: all_mesures_prom,last_5_minutes_mesures_prom: last_5_minutes_mesures_prom,mesures: last_20_mesures}
   end  
 
   def create_mesure
